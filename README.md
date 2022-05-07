@@ -83,10 +83,10 @@ def train():
     }
 
 
-: Trains and validates the model on the data. 
 
 
-#Model Best Initialisation
+
+# ModelInitialisation
 train,enc,dec = build_model(units=256,dense_size=512,enc_layers=2,dec_layers=3,cell = "GRU", embedding_dim = 64)
 # Early Stopping 
 earlyStopping = EarlyStopping(monitor='val_loss', patience=5, verbose=0, mode='min')
