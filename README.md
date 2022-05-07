@@ -44,7 +44,7 @@ def process(data):
 `
 
 #Generating encoder decoder models for LSTM , RNN, GRU
-`
+
 def build_model(cell = "LSTM",units = 32, enc_layers = 1, dec_layers = 1,embedding_dim = 32,dense_size=32,dropout=None):
 `
 Defines a vanilla encoder-decoder model using the following hyperparameters: 
