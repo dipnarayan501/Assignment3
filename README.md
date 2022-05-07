@@ -13,35 +13,34 @@ Team members: Dip Narayan Gupta(CS21Z025),Monica (CS21Z023)
 ALl our notebooks have been created in Google Colab with a GPU backend. We have used TensorFlow and Keras for defining, training and testing our model.
 
 ### Vanilla Seq2Seq model:
-`
+
 
 #Loading dataset
  
 def load_data(path):
-`
+
 Returns important information about the data like input characters, target characters
 
-`
+
 
 #Getting unique tokens
  
 hindi_tokens , english_tokens = unique_tokenize(train)
-`
+
 Returns hindi_tokens , english token
-`
+
 #Mapping the tokens
  
 def tokenize_map(hindi_tokens , english_tokens)
-`
+
 Returns maapping for each tokens
 
-`
 
 #Preprocessing the datset 
 
-`
+
 def process(data):
-`
+
 
 #Generating encoder decoder models for LSTM , RNN, GRU
 
