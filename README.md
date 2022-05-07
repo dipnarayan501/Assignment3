@@ -203,7 +203,7 @@ train.fit([trainx,trainxx],trainy,
          epochs=10,
           callbacks = [checkpoint])
           
-# Prepare Inference model:         
+#Prepare inference model        
 def inference(inp,dec_layers,cell="LSTM"):
 Takes in a model that has the cell_type  and converts into an inference model. ie it reorders the connections of a model
 
