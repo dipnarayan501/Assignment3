@@ -26,7 +26,7 @@ Returns important information about the data like input characters, target chara
 
 # Getting unique tokens
  
-hindi_tokens , english_tokens = unique_tokenize(train)
+def unique_tokenize(train)
 
 Returns hindi_tokens , english token
 
@@ -38,7 +38,6 @@ Returns maapping for each tokens
 
 
 # Preprocessing the datset 
-
 
 def process(data):
 
@@ -58,7 +57,7 @@ dec_layers: Number of layers in the decoder
 
 input_embedding_size: Dimenions of the vector to represent each character
 
-dropout_fraction: fraction of neurons to drop out
+dropout: fraction of neurons to drop out
 
 
 `
@@ -81,7 +80,7 @@ def train():
         'batch_size': 64
     }
 
-# ModelInitialisation
+# Model Initialisation
 train,enc,dec = build_model(units=256,dense_size=512,enc_layers=2,dec_layers=3,cell = "GRU", embedding_dim = 64)
 # Early Stopping 
 earlyStopping = EarlyStopping(monitor='val_loss', patience=5, verbose=0, mode='min')
@@ -130,7 +129,7 @@ Returns important information about the data like input characters, target chara
 
 # Getting unique tokens
  
-hindi_tokens , english_tokens = unique_tokenize(train)
+def unique_tokenize(train)
 
 Returns hindi_tokens , english token
 
@@ -140,7 +139,9 @@ def tokenize_map(hindi_tokens , english_tokens)
 
 Returns maapping for each tokens
 
+# Preprocessing the datset 
 
+def process(data)
 
 # Defining AttentionLayer
 
@@ -149,7 +150,7 @@ class Attention(tf.keras.layers.Layer):
 This class implements Bahdanau attention and creates a layer called attention that can be integrated with keras very easily
 
 
-# Generating encoder decoder models for LSTM , RNN, GRU
+# Generating encoder decoder models for LSTM , GRU
 
 def build_model(cell = "LSTM",units = 32, enc_layers = 1, dec_layers = 1,embedding_dim = 32,dense_size=32,dropout=None):
 
@@ -165,7 +166,7 @@ dec_layers: Number of layers in the decoder
 
 input_embedding_size: Dimenions of the vector to represent each character
 
-dropout_fraction: fraction of neurons to drop out
+dropout: fraction of neurons to drop out
 
 
 
@@ -209,6 +210,7 @@ Takes in a model that has the cell_type  and converts into an inference model. i
 
 # Beam search 
 def beam_search(inp,k,dec_layers,cell="LSTM"):
+k refers to top top k predicted words
 
 # prediction for beam search 
 def test_accuracy_beam(prediction):
@@ -218,13 +220,18 @@ def test_accuracy_beam(prediction):
 # Plot heat mapping
 def plot_attention(attention, sentence, predicted_sentence,orig,hind,deco):
 
+#Visualise connectivity of word
+def visualise_connectivity(np.random.choice(len(words)),0)
+Takes random word and shows visual coonectivity of word based on colour representation
+
 Generate heatmap for given input and predicted sentences`
 
 
 **VesperLibre-Regular.ttf**: Font used for printing Hindi characters in plots.
 
 Visualise words in form of connectivity as gif using
-visualise(which_word) '
+def visualise(which_word) 
+It will generate gif image for given word showing the connectivity
 **prediction_attention.csv**: This file contains the original English word, the reference Hindi word, and predicted first word using beam search.
 
 
