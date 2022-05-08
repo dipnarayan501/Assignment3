@@ -15,7 +15,7 @@ ALl our notebooks have been created in Google Colab with a GPU backend. We have 
 ### Vanilla Seq2Seq model:
 
 
-**Loading dataset
+# Loading dataset
  
 def load_data(path):
 
@@ -23,29 +23,29 @@ Returns important information about the data like input characters, target chara
 
 
 
-**Getting unique tokens
+# Getting unique tokens
  
 hindi_tokens , english_tokens = unique_tokenize(train)
 
 Returns hindi_tokens , english token
 
-**Mapping the tokens
+# Mapping the tokens
  
 def tokenize_map(hindi_tokens , english_tokens)
 
 Returns maapping for each tokens
 
 
-**Preprocessing the datset 
+# Preprocessing the datset 
 
 
 def process(data):
 
-**Generating encoder decoder models for LSTM , RNN, GRU
+# Generating encoder decoder models for LSTM , RNN, GRU
 
 def build_model(cell = "LSTM",units = 32, enc_layers = 1, dec_layers = 1,embedding_dim = 32,dense_size=32,dropout=None):
 
-**Defines a vanilla encoder-decoder model using the following hyperparameters: 
+# Defines a vanilla encoder-decoder model using the following hyperparameters: 
 
 units: Number of cells in the encoder and decoder layers
 
@@ -64,8 +64,7 @@ dropout_fraction: fraction of neurons to drop out
 Train_with_wandb()
 
  Trains, validates the model on the data and logs the accuracies and losses into wandb.
-The characterwise validation accuracy with teacher forcing is logged per epoch. The inference validation accuracy without teacher forcing is logged after the complete training phase.
- change the what procedure we used validation accuary 
+The characterwise validation accuracy with teacher forcing is logged per epoch. The inference validation accuracy without teacher forcing is logged after the complete training phase. change the what procedure we used validation accuary 
 
 def train():
     # Default values for hyper-parameters we're going to sweep over
@@ -80,10 +79,6 @@ def train():
         'dropout': 0.,
         'batch_size': 64
     }
-
-
-
-
 
 # ModelInitialisation
 train,enc,dec = build_model(units=256,dense_size=512,enc_layers=2,dec_layers=3,cell = "GRU", embedding_dim = 64)
