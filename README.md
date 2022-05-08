@@ -110,6 +110,12 @@ Returns acuuracy for test data which are predicted correctly
 **prediction_vanilla.csv**: 
 This file contains the prediction with highest score made using decoder  for the entire test set. It contains the original English word, the reference Hindi word and the pred_vanilla predicted by model.
 
+```
+
+
+---
+
+```python coding
 
 
 ### Attention Seq2Seq model:
