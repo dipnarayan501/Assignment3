@@ -15,7 +15,7 @@ ALl our notebooks have been created in Google Colab with a GPU backend. We have 
 ### Vanilla Seq2Seq model:
 
 
-#Loading dataset
+**Loading dataset
  
 def load_data(path):
 
@@ -23,30 +23,29 @@ Returns important information about the data like input characters, target chara
 
 
 
-#Getting unique tokens
+**Getting unique tokens
  
 hindi_tokens , english_tokens = unique_tokenize(train)
 
 Returns hindi_tokens , english token
 
-#Mapping the tokens
+**Mapping the tokens
  
 def tokenize_map(hindi_tokens , english_tokens)
 
 Returns maapping for each tokens
 
 
-#Preprocessing the datset 
+**Preprocessing the datset 
 
 
 def process(data):
 
-
-#Generating encoder decoder models for LSTM , RNN, GRU
+**Generating encoder decoder models for LSTM , RNN, GRU
 
 def build_model(cell = "LSTM",units = 32, enc_layers = 1, dec_layers = 1,embedding_dim = 32,dense_size=32,dropout=None):
 
-Defines a vanilla encoder-decoder model using the following hyperparameters: 
+**Defines a vanilla encoder-decoder model using the following hyperparameters: 
 
 units: Number of cells in the encoder and decoder layers
 
@@ -62,9 +61,9 @@ dropout_fraction: fraction of neurons to drop out
 
 
 `
-#Train_with_wandb()
+Train_with_wandb()
 
-: Trains, validates the model on the data and logs the accuracies and losses into wandb.
+ Trains, validates the model on the data and logs the accuracies and losses into wandb.
 The characterwise validation accuracy with teacher forcing is logged per epoch. The inference validation accuracy without teacher forcing is logged after the complete training phase.
  change the what procedure we used validation accuary 
 
@@ -94,7 +93,7 @@ earlyStopping = EarlyStopping(monitor='val_loss', patience=5, verbose=0, mode='m
 # To save the model with best validation accuracy
 checkpoint = ModelCheckpoint('bestmodel.h5', monitor='val_accuracy', mode='max', verbose=0, save_best_only=True)
 
-#fit the data 
+# fit the data 
 train.fit([trainx,trainxx],trainy,
          batch_size=128,
          validation_data=([valx,valxx],valy),
@@ -106,7 +105,7 @@ def inference(inp,dec_layers,cell="LSTM"):
 Takes in a model that has the cell_type and converts into an inference model. ie it reorders the connections of a model
 
 `
-#Getting test accuracy
+# Getting test accuracy
 def test_accuracy(pred): 
 
 Returns acuuracy for test data which are predicted correctly
@@ -119,7 +118,7 @@ This file contains the prediction with highest score made using decoder  for the
 
 ### Attention Seq2Seq model:
 
-#Loading dataset
+# Loading dataset
  
 def load_data(path):
 
@@ -127,13 +126,13 @@ Returns important information about the data like input characters, target chara
 
 
 
-#Getting unique tokens
+# Getting unique tokens
  
 hindi_tokens , english_tokens = unique_tokenize(train)
 
 Returns hindi_tokens , english token
 
-#Mapping the tokens
+# Mapping the tokens
  
 def tokenize_map(hindi_tokens , english_tokens)
 
@@ -141,14 +140,14 @@ Returns maapping for each tokens
 
 
 
-#Defining AttentionLayer
+# Defining AttentionLayer
 
 class Attention(tf.keras.layers.Layer):
 
 This class implements Bahdanau attention and creates a layer called attention that can be integrated with keras very easily
 
 
-#Generating encoder decoder models for LSTM , RNN, GRU
+# Generating encoder decoder models for LSTM , RNN, GRU
 
 def build_model(cell = "LSTM",units = 32, enc_layers = 1, dec_layers = 1,embedding_dim = 32,dense_size=32,dropout=None):
 
@@ -168,9 +167,9 @@ dropout_fraction: fraction of neurons to drop out
 
 
 
-#Train_with_wandb()
+# Train_with_wandb()
 
-: Trains, validates the model on the data and logs the accuracies and losses into wandb.
+Trains, validates the model on the data and logs the accuracies and losses into wandb.
 The characterwise validation accuracy with teacher forcing is logged per epoch. The inference validation accuracy without teacher forcing is logged after the complete training phase.
 
 
@@ -189,32 +188,32 @@ def train():
     }
 
 
-: Trains and validates the model on the data. The characterwise validation accuracy with teacher forcing is plotted per epoch. The inference validation accuracy without teacher forcing is printed after the complete training phase.
+Trains and validates the model on the data. The characterwise validation accuracy with teacher forcing is plotted per epoch. The inference validation accuracy without teacher forcing is printed after the complete training phase.
 
 
-#Model Initilisation
+# Model Initilisation
 train,enc,dec = build_model(units=256,dense_size=512,enc_layers=2,dec_layers=3,cell = "GRU", embedding_dim = 64)
 
-#fit the data 
+# fit the data 
 train.fit([trainx,trainxx],trainy,
          batch_size=128,
          validation_data=([valx,valxx],valy),
          epochs=10,
           callbacks = [checkpoint])
           
-#Prepare inference model        
+# Prepare inference model        
 def inference(inp,dec_layers,cell="LSTM"):
 Takes in a model that has the cell_type  and converts into an inference model. ie it reorders the connections of a model
 
-#Beam search 
+# Beam search 
 def beam_search(inp,k,dec_layers,cell="LSTM"):
 
-#prediction for beam search 
+# prediction for beam search 
 def test_accuracy_beam(prediction):
  returns accuracy based on top k words
 
 
-#Plot heat mapping
+# Plot heat mapping
 def plot_attention(attention, sentence, predicted_sentence,orig,hind,deco):
 
 Generate heatmap for given input and predicted sentences`
