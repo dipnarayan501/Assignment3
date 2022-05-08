@@ -14,6 +14,7 @@ ALl our notebooks have been created in Google Colab with a GPU backend. We have 
 
 ### Vanilla Seq2Seq model:
 
+```python coding
 
 # Loading dataset
  
